@@ -1,0 +1,26 @@
+[package]
+name = "{{project-name}}"
+authors = ["{{authors}}"]
+version = "0.0.1" # remember to update html_root_url
+description = """
+This is a RusPiRo template
+"""
+license = "Apache-2.0"
+readme = "README.md"
+categories = ["no-std", "embedded"]
+edition = "2018"
+
+[[bin]]
+name = "kernel"
+path = "./src/kernel.rs"
+
+[build-dependencies]
+cc = "1.0"
+
+[dependencies]
+ruspiro-boot = "0.3"
+ruspiro-allocator = "0.3"
+
+[features]
+default = ["ruspiro_pi3"]
+ruspiro_pi3 = ["ruspiro-boot/ruspiro_pi3"]
