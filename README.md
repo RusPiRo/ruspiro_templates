@@ -10,9 +10,9 @@ $> cargo generate --git https://github.com/RusPiRo/ruspiro_templates.git --branc
 ```
 
 ## Available templates
-Template                                  | Description
-------------------------------------------|-------------------------------------------------------------------------------
-[01_minimal](../../tree/01_minimal)       | Bare minimum template to build a simple bare metal kernel for the Raspberry Pi
+Template                                      | Description
+----------------------------------------------|-------------------------------------------------------------------------------
+[01_minimal](../../tree/templates/01_minimal) | Bare minimum template to build a simple bare metal kernel for the Raspberry Pi
 
 ## License
 Licensed under Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0) or MIT ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)) at your choice.
