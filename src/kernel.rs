@@ -2,7 +2,7 @@
  * Copyright (c) 2019 by the authors
  * 
  * Author: {{authors}}
- * License: {{license}}
+ * License: Apache License 2.0 / MIT
  **********************************************************************************************************************/
 #![no_std]
 #![no_main]
