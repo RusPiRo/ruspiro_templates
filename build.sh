@@ -4,12 +4,40 @@
 #*********************************************************************************
 set +ev
 
-# aarch64
-export CFLAGS="-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
-export RUSTFLAGS="-C target-cpu=cortex-a53 -C target-feature=+strict-align,+a53,+fp-armv8,+neon -C link-arg=-nostartfiles -C opt-level=3 -C debuginfo=0 -C link-arg=-T./link64.ld"
-export CC="aarch64-elf-gcc"
-export AR="aarch64-elf-ar"
-export RUSTFLAGS="-C linker=aarch64-elf-gcc ${RUSTFLAGS}"
+if [ $# -eq 0 ] 
+    then 
+        echo "provide the target architecture to build for - 32 or 64"
+        exit 1
+fi
 
-cargo xbuild --target aarch64-unknown-linux-gnu --release --all
-cargo objcopy -- -O binary ./target/aarch64-unknown-linux-gnu/release/kernel ./target/kernel8.img
+if [ $1 = "64" ]
+    then
+        # aarch64
+        CFLAGS="-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
+        RUSTFLAGS="-C linker=aarch64-elf-gcc -C target-cpu=cortex-a53 -C target-feature=+strict-align,+a53,+fp-armv8,+neon -C link-arg=-nostartfiles -C opt-level=3 -C debuginfo=0 -C link-arg=-T./link64.ld"
+        CC="aarch64-elf-gcc"
+        AR="aarch64-elf-ar"
+        TARGET="aarch64-unknown-linux-gnu"
+        KERNEL="kernel8.img"
+elif [ $1 = "32" ]
+    then
+        CFLAGS="-mfpu=neon-fp-armv8 -mfloat-abi=hard -march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
+        RUSTFLAGS="-C linker=arm-eabi-gcc -C target-cpu=cortex-a53 -C target-feature=+strict-align,+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon -C link-arg=-nostartfiles -C link-arg=-T./link32.ld -C opt-level=3 -C debuginfo=0"
+        CC="arm-eabi-gcc"
+        AR="arm-eabi-ar"
+        TARGET="armv7-unknown-linux-gnueabihf"
+        KERNEL="kernel7.img"
+else
+    echo 'provide the archtitecture to be build. Use either "build.sh 32" or "build.sh 64" followed by "deploy" if you like to deploy to the device'
+    exit 1
+fi
+
+export CFLAGS=${CFLAGS}
+export RUSTFLAGS=${RUSTFLAGS}
+export CC=${CC}
+export AR=${AR}
+export TARGET=${TARGET}
+export KERNEL=${KERNEL}
+
+cargo xbuild --target ${TARGET} --release
+cargo objcopy -- -O binary ./target/${TARGET}/release/kernel ./target/${KERNEL}
