@@ -8,9 +8,20 @@ This template uses the `ruspiro-boot` crate for the initial boot strapping and h
 code line. From here it's up to you to implement the stuff you need in the `src/kernel.rs` file.
 
 Without changing the `src/kernel.rs` file you could build this project into a valid Raspberry Pi
-64Bit kernel. When run on the actual device the Uart console will display:
+32 or 64Bit kernel with the following commands:
+Target Architecture | Command
+--------------------|--------------------------
+Aarch32             | <pre>$> cargo make pi3 --profile a32</pre> 
+Aarch64             | <pre>$> cargo make pi3 --profile a64</pre>
 
-```
+> :bulb: This requires to install ``cargo-make`` like so:
+> ```shell
+> $> cargo install cargo-make
+> ```
+
+When run on the actual device the Uart console will display:
+
+```shell
 ########## RusPiRo ----- Bootstrapper v0.3 @ Aarch64 ----- ##########
 Kernel alive on core 0
 Kernel alive on core 1
