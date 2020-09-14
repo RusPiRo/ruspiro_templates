@@ -31,6 +31,21 @@ env = { FEATURES = "ruspiro_pi3" }
 command = "cargo"
 args = ["clippy"]
 
+[tasks.doc]
+env = { FEATURES = "ruspiro_pi3" }
+command = "cargo"
+args = ["doc", "--target", "${BUILD_TARGET}", "--open"]
+
+[tasks.doctest]
+env = { FEATURES = "ruspiro_pi3" }
+command = "cargo"
+args = ["test", "--doc", "--target", "${BUILD_TARGET}"]
+
+[tasks.test]
+env = { FEATURES = "ruspiro_pi3" }
+command = "cargo"
+args = ["test", "--target", "${BUILD_TARGET}"]
+
 [tasks.clean]
 command = "cargo"
 args = ["clean"]
