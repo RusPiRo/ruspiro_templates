@@ -1,40 +1,31 @@
-# RusPiRo Minimal Template
+# RusPiRo Library Template
 
-This is the bare minimum template to get started with RusPiRo based bare metal kernel development for
-the Raspberry Pi 3(B+).
+This is template to be used when creating new *RusPiRo library crates*.
 
-## Features
-This template uses the `ruspiro-boot` crate for the initial boot strapping and hand over to the rust
-code line. From here it's up to you to implement the stuff you need in the `src/kernel.rs` file.
+## Contents
 
-Without changing the `src/kernel.rs` file you could build this project into a valid Raspberry Pi
-32 or 64Bit kernel with the following commands:
-Target Architecture | Command
---------------------|--------------------------
-Aarch32             | <pre>$> cargo make pi3 --profile a32</pre> 
-Aarch64             | <pre>$> cargo make pi3 --profile a64</pre>
+This template provides all default files necessary to jump start library development. It provides a `Makefile.toml` to execute local builds as well as a Travis-CI configuration file (`.travis.yml`) to support pipeline builds.
 
-> :bulb: This requires to install ``cargo-make`` like so:
-> ```shell
-> $> cargo install cargo-make
-> ```
+## Usage
 
-When run on the actual device the Uart console will display:
+The following command will create a new project based on this template
 
 ```shell
-########## RusPiRo ----- Bootstrapper v0.3 @ Aarch64 ----- ##########
-Kernel alive on core 0
-Kernel alive on core 1
-Kernel running on core 0
-Kernel running on core 1
-Kernel alive on core 2
-Kernel alive on core 3
-Kernel running on core 2
-Kernel running on core 3
+$> cargo generate --git https://github.com/RusPiRo/ruspiro_templates.git --branch templates/ruspiro-lib --name <project-name>
 ```
 
-For help on how to build kernel binaries for the Raspberry Pi with rust checkout the 
-[RusPiRo Tutorials](https://github.com/RusPiRo/ruspiro-tutorials)
+## Local Builds
+
+To execute local builds `cargo-make` and `cargo-xbuild` is required. Also ensure the `aarch64-unknown-none` rust build target is installed as well as it's `src` components. It's safe to use the following commands as a one time setup, assuming the `aarch64-none-elf` crosscompilation toolchain is installed already.
+
+```shell
+$> cargo install cargo-xbuild
+$> cargo install cargo-make
+$> rustup target add aarch64-unknown-none
+$> rustup component add rust-src
+$> rustup component add llvm-tools-preview
+```
 
 ## License
+
 Licensed under Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0) or MIT ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)) at your choice.

@@ -1,26 +1,37 @@
 [package]
 name = "{{project-name}}"
 authors = ["{{authors}}"]
-version = "0.0.1" # remember to update html_root_url
+version = "0.0.1" # remember to update html_root_url in lib.rs
 description = """
-This is a RusPiRo template
+Place a brief description of this library here
 """
 license = "Apache-2.0"
 readme = "README.md"
 categories = ["no-std", "embedded"]
 edition = "2018"
-publish = false
+exclude = [".travis.yml", "Makefile.toml"]
 
-[[bin]]
-name = "kernel"
-path = "./src/kernel.rs"
+[badges]
+travis-ci = { repository = "RusPiRo/{{project-name}}", branch = "master" }
+maintenance = { status = "actively-developed" }
+
+[lib]
 
 [build-dependencies]
 cc = "1.0"
 
 [dependencies]
-ruspiro-boot = "0.3"
-ruspiro-allocator = "0.4"
+# list other dependencies here
+# for every RUSPIRO dependency a corresponding entry
+# in the [patch.crates-io] section pointing to the actual master branch
+# of this crate is required - example:
+# ruspiro-register = "0.4"
 
 [features]
-ruspiro_pi3 = [ "ruspiro-boot/ruspiro_pi3" ]
+ruspiro_pi3 = [ ]
+
+[patch.crates-io]
+# we require an entry for each dependent RUSPIRO crate here
+# this increases PR build stability if dependent crates got updated but are not
+# published to crates.io yet
+# ruspiro-register = { git = "https://github.com/RusPiRo/ruspiro-register.git" }
