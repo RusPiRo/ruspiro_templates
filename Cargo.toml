@@ -15,7 +15,7 @@ edition = "2018"
 exclude = [".travis.yml", "Makefile.toml"]
 
 [badges]
-travis-ci = { repository = "RusPiRo/{{project-name}}", branch = "master" }
+travis-ci = { repository = "RusPiRo/{{project-name}}", branch = "release" }
 maintenance = { status = "actively-developed" }
 
 [lib]
