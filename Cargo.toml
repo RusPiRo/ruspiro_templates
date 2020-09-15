@@ -7,7 +7,10 @@ Place a brief description of this library here
 """
 license = "Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/RusPiRo/{{project-name}}/tree/v{{version}}"
+documentation = "https://docs.rs/{{project-name}}/{{version}}"
 categories = ["no-std", "embedded"]
+keywords = ["ruspiro"]
 edition = "2018"
 exclude = [".travis.yml", "Makefile.toml"]
 
@@ -18,7 +21,8 @@ maintenance = { status = "actively-developed" }
 [lib]
 
 [build-dependencies]
-cc = "1.0"
+# uncomment this if a build.rs script should be run as part of the build process
+# cc = "1.0"
 
 [dependencies]
 # list other dependencies here
