@@ -114,7 +114,7 @@ jobs:
         # extract current crate version from argo.toml
         - export CRATE_VERSION=`sed -En 's/^version.*=.*\"(.*)\".*$/\1/p' < Cargo.toml`
         # before actually publishing replace the final version for doc and repository in the Crago.toml
-        - sed -i -e 's/{{version}}/'$CRATE_VERSION'/g' Cargo.toml
+        - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' Cargo.toml
         # also update the version in the lib.rs doc root url
-        - sed -i -e 's/{{version}}/'$CRATE_VERSION'/g' src/lib.rs
+        - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' src/lib.rs
       script: cargo publish --target aarch64-unknown-none --features ruspiro_pi3
