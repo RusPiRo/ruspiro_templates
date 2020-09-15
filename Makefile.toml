@@ -16,7 +16,7 @@ CC = "aarch64-linux-gnu-gcc"
 AR = "aarch64-linux-gnu-ar"
 CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
-BUILD_TARGET = "aarch64-unknown-linux-gnu"
+BUILD_TARGET = "aarch64-unknown-none"
 
 [tasks.xbuild]
 command = "cargo"
@@ -39,12 +39,7 @@ args = ["doc", "--target", "${BUILD_TARGET}", "--open"]
 [tasks.doctest]
 env = { FEATURES = "ruspiro_pi3" }
 command = "cargo"
-args = ["test", "--doc", "--target", "${BUILD_TARGET}"]
-
-[tasks.test]
-env = { FEATURES = "ruspiro_pi3" }
-command = "cargo"
-args = ["test", "--target", "${BUILD_TARGET}"]
+args = ["xtest", "--doc", "--target", "${BUILD_TARGET}"]
 
 [tasks.clean]
 command = "cargo"
