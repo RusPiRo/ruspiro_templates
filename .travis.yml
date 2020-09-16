@@ -43,7 +43,7 @@ jobs:
       install:
         # if we not build a PR we remove the patch of the dependencies to their github repo's
         - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/{^\[patch\.crates-io\] /{:a;N;/\Z}/!ba};/^ruspiro-.*\(git\|path\).*/d" Cargo.toml; fi'
-      script: script: cargo test --doc --features ruspiro_pi3
+      script: cargo test --doc --features ruspiro_pi3
     - stage: test
       name: "Run Unit Tests"
       install:
@@ -74,7 +74,7 @@ jobs:
         # extract current crate version from argo.toml
         - export CRATE_VERSION=v`sed -En 's/^version.*=.*\"(.*)\".*$/\1/p' < Cargo.toml`
         # retrieve last release version from github
-        - export LAST_VERSION="$(curl --silent "https://api.github.com/repos/$TRAVIS_REPO_SLUG/ruspiro-platform/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')"
+        - export LAST_VERSION="$(curl --silent "https://api.github.com/repos/$TRAVIS_REPO_SLUG/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')"
         # use default version if none yet published (required for proper release note extraction)
         - export LAST_VERSION=${LAST_VERSION:-v0.0.0}
         - echo $CRATE_VERSION
