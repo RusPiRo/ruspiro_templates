@@ -119,4 +119,4 @@ jobs:
         - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' Cargo.toml
         # also update the version in the lib.rs doc root url
         - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' src/lib.rs
-      script: cargo publish --target aarch64-unknown-none --features ruspiro_pi3
+      script: cargo publish --token $CRATES_TOKEN --target aarch64-unknown-none --features ruspiro_pi3
