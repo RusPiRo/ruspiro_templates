@@ -14,6 +14,8 @@ The following command will create a new project based on this template
 $> cargo generate --git https://github.com/RusPiRo/ruspiro_templates.git --branch templates/ruspiro-lib --name <project-name>
 ```
 
+Once done the `README.md` file can be deleted and the `README.template` (providing the project readme skeleton) can be renamed to `README.md`. Before commiting the new projects to a github repository make sure the correct branch name is used (eg. *master*) as the `cargo generate` typically defined the branch the project was generated from as the initial branch.
+
 ## Local Builds
 
 To execute local builds `cargo-make` and `cargo-xbuild` is required. Also ensure the `aarch64-unknown-none` rust build target is installed as well as it's `src` components. It's safe to use the following commands as a one time setup, assuming the `aarch64-none-elf` crosscompilation toolchain is installed already.

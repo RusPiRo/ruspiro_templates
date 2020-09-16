@@ -105,7 +105,7 @@ jobs:
           branch: release
 
     - stage: publish
-      name: "Run Cargo Publish Dry-Run"
+      name: "Run Cargo Publish"
       install:
         - sudo apt-get install -y gcc-aarch64-linux-gnu
         - cargo install cargo-xbuild

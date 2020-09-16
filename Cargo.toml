@@ -5,7 +5,7 @@ version = "0.0.1" # remember to update html_root_url in lib.rs
 description = """
 Place a brief description of this library here
 """
-license = "Apache-2.0"
+license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/RusPiRo/{{project-name}}/tree/v||VERSION||"
 documentation = "https://docs.rs/{{project-name}}/||VERSION||"
@@ -17,6 +17,7 @@ exclude = [".travis.yml", "Makefile.toml"]
 [badges]
 travis-ci = { repository = "RusPiRo/{{project-name}}", branch = "release" }
 maintenance = { status = "actively-developed" }
+is-it-maintained-open-issues = { repository = "RusPiRo/{{project-name}}" }
 
 [lib]
 
