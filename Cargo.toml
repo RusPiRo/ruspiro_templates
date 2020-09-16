@@ -38,5 +38,6 @@ ruspiro_pi3 = [ ]
 [patch.crates-io]
 # we require an entry for each dependent RUSPIRO crate here
 # this increases PR build stability if dependent crates got updated but are not
-# published to crates.io yet
+# published to crates.io yet.
+# !This section need to be always the last in the Cargo.toml file!
 # ruspiro-register = { git = "https://github.com/RusPiRo/ruspiro-register.git" }
