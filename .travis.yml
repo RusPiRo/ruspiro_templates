@@ -41,15 +41,9 @@ jobs:
     - stage: test
       name: "Run Doc Tests"
       install:
-        - sudo apt-get install -y gcc-aarch64-linux-gnu
-        - cargo install cargo-xbuild
-        - cargo install cargo-make 
-        - rustup target add aarch64-unknown-none
-        - rustup component add rust-src
-        - rustup component add llvm-tools-preview
         # if we not build a PR we remove the patch of the dependencies to their github repo's
         - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/{^\[patch\.crates-io\] /{:a;N;/\Z}/!ba};/^ruspiro-.*\(git\|path\).*/d" Cargo.toml; fi'
-      script: cargo make --profile travis doctest
+      script: script: cargo test --doc --features ruspiro_pi3
     - stage: test
       name: "Run Unit Tests"
       install:
