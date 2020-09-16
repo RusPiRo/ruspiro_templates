@@ -119,4 +119,5 @@ jobs:
         - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' Cargo.toml
         # also update the version in the lib.rs doc root url
         - sed -i -e 's/||VERSION||/'$CRATE_VERSION'/g' src/lib.rs
-      script: cargo publish --token $CRATES_TOKEN --target aarch64-unknown-none --features ruspiro_pi3
+      # publish with token and dirty flag as we just updated some files and won't commit them back to the branch
+      script: cargo publish --token $CRATES_TOKEN --allow-dirty --target aarch64-unknown-none --features ruspiro_pi3
