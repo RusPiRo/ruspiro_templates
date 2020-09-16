@@ -6,7 +6,7 @@
  **********************************************************************************************************************/
 #![doc(html_root_url = "https://docs.rs/{{project-name}}/||VERSION||")]
 // we require to run with 'std' in unit tests and doc tests to have an allocator in place
-#![cfg_attr(not(any(test, doctests)), no_std)]
+#![cfg_attr(not(any(test, doctest)), no_std)]
 
 //! # {{project-name}}
 //! 
