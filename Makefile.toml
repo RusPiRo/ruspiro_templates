@@ -29,7 +29,7 @@ run_task = "xbuild"
 [tasks.clippy]
 env = { FEATURES = "ruspiro_pi3" }
 command = "cargo"
-args = ["clippy"]
+args = ["clippy", "--target", "${BUILD_TARGET}", "--features", "${FEATURES}"]
 
 [tasks.doc]
 env = { FEATURES = "ruspiro_pi3" }
