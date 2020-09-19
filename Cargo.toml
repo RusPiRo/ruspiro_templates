@@ -28,7 +28,7 @@ is-it-maintained-open-issues = { repository = "RusPiRo/{{project-name}}" }
 [dependencies]
 # list other dependencies here
 # for every RUSPIRO dependency a corresponding entry
-# in the [patch.crates-io] section pointing to the actual master branch
+# in the [patch.crates-io] section pointing to the actual master or any other branch
 # of this crate is required - example:
 # ruspiro-register = "0.4"
 
@@ -40,4 +40,4 @@ ruspiro_pi3 = [ ]
 # this increases PR build stability if dependent crates got updated but are not
 # published to crates.io yet.
 # !This section need to be always the last in the Cargo.toml file!
-# ruspiro-register = { git = "https://github.com/RusPiRo/ruspiro-register.git" }
+# ruspiro-register = { git = "https://github.com/RusPiRo/ruspiro-register.git", branch = "master" }
