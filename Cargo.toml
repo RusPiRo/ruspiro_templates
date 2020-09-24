@@ -35,6 +35,12 @@ is-it-maintained-open-issues = { repository = "RusPiRo/{{project-name}}" }
 [features]
 ruspiro_pi3 = [ ]
 
+[package.metadata.docs.rs]
+targets = ["aarch64-unknown-none", "aarch64-unknown-linux-gnu"]
+features = [
+    "ruspiro_pi3"
+]
+
 [patch.crates-io]
 # we require an entry for each dependent RUSPIRO crate here
 # this increases PR build stability if dependent crates got updated but are not
